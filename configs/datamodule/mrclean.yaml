@@ -1,0 +1,9 @@
+_target_: src.datamodules.mrclean_datamodule.UnsubtractedMRCLEANDataModule
+data_dir: ${paths.data_dir}/unsub_mrclean_npy/motion
+image_size: 512
+train_val_test_split: [0.5, 0.2, 0.3]
+sample_as_series: [False, False, True]
+batch_size: 8
+augmentation: False
+num_workers: 24
+pin_memory: False

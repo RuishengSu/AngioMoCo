@@ -1,0 +1,20 @@
+# @package _global_
+
+defaults:
+  - _self_
+#  - datamodule: mrclean.yaml # choose datamodule with `test_dataloader()` for evaluation
+  - model: mnist.yaml
+  - logger: null
+#  - trainer: default.yaml
+  - paths: default.yaml
+  - extras: default.yaml
+  - hydra: default.yaml
+
+task_name: "predict"
+
+tags: ["dev"]
+
+# passing checkpoint path is necessary for evaluation
+ckpt_path: "path/to/trained_model.ckpt"
+contrast_fnum: 'all'  # int, list, 'all' to get pair results in png; null or comment out to get series results in gif.
+fp: "path/to/dicom_file"

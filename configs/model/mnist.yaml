@@ -1,0 +1,28 @@
+_target_: src.models.mnist_module.MNISTLitModule
+
+optimizer:
+  _target_: torch.optim.Adam
+  _partial_: true
+  lr: 0.001
+  weight_decay: 0.0
+
+#scheduler: null
+scheduler:
+  _target_: torch.optim.lr_scheduler.ReduceLROnPlateau
+  _partial_: true
+  mode: min
+  factor: 0.1
+  patience: 200
+
+loss:
+  _target_: src.models.components.losses.VMLoss
+  lambda_param: 0.01  # this value should be between 0 and 1.
+  image_loss: 'mse'
+  bidir: True
+  mask_contrast: False
+  mask_edge: False
+
+net:
+  _target_: src.models.components.voxelmorph.VxmDense
+  # nb_unet_features: [[8, 16, 32, 64, 128, 256, 512, 512], [512, 512, 256, 128, 64, 32, 16, 16, 16, 8, 8]]
+  inshape: [512, 512]
